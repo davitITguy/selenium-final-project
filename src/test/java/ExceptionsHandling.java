@@ -4,10 +4,12 @@ import org.jsoup.select.Evaluator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
+
 
 public class ExceptionsHandling {
 
@@ -49,15 +51,17 @@ public class ExceptionsHandling {
 
 
 
-        try {
-            WebElement waitedAlert = driver.findElement(By.id("timerAlertButton"));
-            waitedAlert.click();
-            driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
-            driver.switchTo().alert().accept();
-
-        }catch (NoAlertPresentException e){
-
-        }
+//        try {
+//            WebElement waitedAlert = driver.findElement(By.id("timerAlertButton"));
+//            waitedAlert.click();
+//            WebDriverWait wait = new WebDriverWait(driver, Timespan.FromSeconds(10));
+//            wait.Until(ExpectedCondition.alertIsPresent());
+////            driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+//            driver.switchTo().alert().accept();
+//
+//        }catch (NoAlertPresentException e){
+//
+//        }
     }
 }
 
