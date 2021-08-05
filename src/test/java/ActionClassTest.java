@@ -14,15 +14,15 @@ public class ActionClassTest {
         driver.get("https://demoqa.com/slider");
 
         WebElement SliderMove = driver.findElement(By.xpath("//div[@id='sliderContainer']/div[1]/span[1]/input"));
-           Actions action = new Actions(driver);
-           action.clickAndHold(SliderMove);
-           Thread.sleep(1000);
-           for (int i =0 ;i <=25 ; i++){
-               action.sendKeys(Keys.ARROW_RIGHT);
+        Actions action = new Actions(driver);
+        action.clickAndHold(SliderMove);
+        Thread.sleep(1000);
+        for (int i =0 ;i <25 ; i++){
+            SliderMove.sendKeys(Keys.ARROW_RIGHT);
                Thread.sleep(200);
            }
            action.release(SliderMove);
-           Thread.sleep(2000);
+
 
     }
 }
