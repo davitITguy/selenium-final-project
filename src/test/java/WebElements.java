@@ -26,17 +26,33 @@ public class WebElements {
         }
         // Finding Last Delete Btn Part 1
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        WebElement LastSamurai = driver.findElement(By.xpath("//*[@id=\"elements\"]/button[3]"));
+        WebElement LastSamurai = driver.findElement(By.xpath("//button[@class=\"added-manually\"][last()]"));
         System.out.println(LastSamurai.getText());
 
+        String xpath = "//button[@class=\"added-manually\"][last()]";
+        String a = null;
+        List<WebElement> LastSamurais = driver.findElements(By.xpath("//button[@class=\"added-manually\"][last()]"));
+        for (int i = 0; i < LastSamurais.size(); i++) {
+            a = LastSamurais.get(i).toString();
+            System.out.println(a);
+        }
+        if (a.contains(xpath)) {
+            System.out.println("test passed");
+        } else {
+            System.out.println("test failed");
+        }
         // Finding Last Delete Btn Part 2
     }
-//    public void ChallengeDOM(){
-//        WebDriverManager.chromedriver().setup();
-//        WebDriver driver = new ChromeDriver();
-//        String url = "http://the-internet.herokuapp.com/challenging_dom";
-//        driver.get(url);
-//
-//
-//    }
+    @Test
+    public void ChallengeDOM(){
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        String url = "http://the-internet.herokuapp.com/challenging_dom";
+        driver.get(url);
+
+        WebElement Adipisci = driver.findElement(By.xpath("//td[text()=\"Adipisci9\"]"));
+        System.out.println(Adipisci.getText());
+        Adipisci = driver.findElement(By.xpath("//td[text()='Adipisci9']/following-sibling::td"));
+        System.out.println(Adipisci.getText());
+    }
 }
