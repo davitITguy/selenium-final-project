@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -50,18 +51,17 @@ public class ExceptionsHandling {
         driver.get(url);
 
 
+        // 5 second Alert
+        try {
+            WebElement waitedAlert = driver.findElement(By.id("timerAlertButton"));
+            waitedAlert.click();
+            WebDriverWait wait = new WebDriverWait(driver,10);
+            wait.until(ExpectedConditions.alertIsPresent());
+            driver.switchTo().alert().accept();
 
-//        try {
-//            WebElement waitedAlert = driver.findElement(By.id("timerAlertButton"));
-//            waitedAlert.click();
-//            WebDriverWait wait = new WebDriverWait(driver, Timespan.FromSeconds(10));
-//            wait.Until(ExpectedCondition.alertIsPresent());
-////            driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
-//            driver.switchTo().alert().accept();
-//
-//        }catch (NoAlertPresentException e){
-//
-//        }
+        }catch (NoAlertPresentException e){
+
+        }
     }
 }
 
