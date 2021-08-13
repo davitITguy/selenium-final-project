@@ -24,6 +24,7 @@ public class BonusHomeWorkTest {
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class=\"_2YULOR\"]")));
         WebElement InvalidText = driver.findElement(By.xpath("//span[@class=\"_2YULOR\"]"));
-        System.out.println(InvalidText.getText());
+        System.out.println(InvalidText.getText()
+        );
     }
 }
