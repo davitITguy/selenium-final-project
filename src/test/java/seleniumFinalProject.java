@@ -161,35 +161,64 @@ public class seleniumFinalProject {
         FormFiller.sendKeys("MostAwesomePass1");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='button-login']")));
-
-        FormFiller = driver.findElement(By.xpath("//input[@id='button-login']"));
+        FormFiller = driver.findElement(By.id("button-login"));
         FormFiller.click();
 
-//        BillingFiller = driver.findElement(By.xpath("//select"));
-//        Thread.sleep(1000);
-//        BillingFiller.click();
-//        BillingFiller.sendKeys("GEORGIA");
-//        BillingFiller.click();
-//
-//
-//        BillingFiller = driver.findElement(By.xpath("//select[@name='zone_id']"));
-//        Thread.sleep(1000);
-//        BillingFiller.click();
-//        BillingFiller.sendKeys("TBILISI");
-//        BillingFiller.click();
-//
-//        BillingFiller = driver.findElement(By.xpath("//a[text()='Continue Shopping']"));
-//        BillingFiller.click();
-//
-//
-/////////////////////////////////////////////////////////////////////////
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("input-payment-firstname")));
-//        WebElement billingFirstname = driver.findElement(By.id("input-payment-firstname"));
+        //Check
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("button-payment-address")));
+
+        Thread.sleep(2000);
+        FormFiller = driver.findElement(By.id("button-payment-address"));
+        FormFiller.click();
+
+        //Check
+        Thread.sleep(2000);
 
 
+        FormFiller = driver.findElement(By.xpath("//input[@id='button-shipping-address']"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("button-shipping-address")));
+        FormFiller.click();
+
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("button-shipping-method")));
+        FormFiller = driver.findElement(By.id("button-shipping-method"));
+        FormFiller.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='checkbox']")));
+
+        FormFiller = driver.findElement(By.xpath("//input[@type='checkbox']"));
+        FormFiller.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("button-payment-method")));
+
+        FormFiller = driver.findElement(By.id("button-payment-method"));
+        FormFiller.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[text()='$200.00']")));
+
+        String SubTotal = driver.findElement(By.xpath("//table/tfoot/tr[1]/td[2]")).getText();
+        String FlatShipping = driver.findElement(By.xpath("//table/tfoot/tr[2]/td[2]")).getText();
+        String Total = driver.findElement(By.xpath("//table/tfoot/tr[3]/td[2]")).getText();
+
+        System.out.println("Sub Total is " + SubTotal + "FlatShipping is "+FlatShipping+ "Total is "+Total);
+
+        FormFiller = driver.findElement(By.id("button-confirm"));
+        FormFiller.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='history']")));
+        FormFiller = driver.findElement(By.xpath("//a[text()='history']"));
+        FormFiller.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='history']")));
+        FormFiller = driver.findElement(By.xpath("//td[text()='Pending']"));
+        String Pendingstatus = FormFiller.getText();
+
+        FormFiller = driver.findElement(By.xpath("//td[text()=\"14/08/2021\"]"));
+        String DateStatus = FormFiller.getText();
+        System.out.println("Status is: "+ Pendingstatus + "Item Date is:"+DateStatus);
+        System.out.println("Test is Passed");
 
         }
-
 
 
 
